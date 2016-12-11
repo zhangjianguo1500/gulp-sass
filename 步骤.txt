@@ -1,0 +1,46 @@
+1、npm init(初始化package.json)
+
+2、npm install gulp --save-dev(局部安装Gulp)
+
+3、创建gulpfile.js，加上
+   var gulp = require('gulp');
+
+4、npm install gulp-sass --save-dev(安装gulp-sass插件编译sass文件)
+   在gulpfile.js文件中，添加：var sass = require('gulp-sass');
+
+
+   //编译sass后输出css
+gulp.task('sass2',function(){
+    gulp.src('src/scss/*.scss')//被编译的文件路径
+        .pipe(sass())
+        .pipe(gulp.dest('src/css/'))//编译后自动保存的路径
+})
+
+   此时命令行执行：gulp sass
+   会在src/css/自动编译生成所有的css
+
+5、npm install gulp-minify-css --save-dev(压缩CSS)
+   安装后添加
+   .pipe(cssmin())
+   npm install gulp-rename --save-dev
+   安装后，添加
+   在头部添加：rename = require('gulp-rename');
+   压缩后的文件名
+   .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
+
+6、输出未压缩的CSS(未压缩CSS)
+
+//编译sass后输出css
+gulp.task('sass2',function(){
+    gulp.src('src/scss/*.scss')//被编译的文件路径
+        .pipe(sass())
+        .pipe(gulp.dest('src/css/'))//编译后自动保存的路径
+})
+
+
+
+
+http://www.tuicool.com/articles/IZR3AfV
+http://www.ydcss.com/archives/41
+http://php.cn/js-tutorial-338544.html
+http://www.qdfuns.com/notes/17100/31b17c8dcccec00de8315dfa91521cd9.html
