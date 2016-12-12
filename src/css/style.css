@@ -1,0 +1,39 @@
+.attr-news, .attr-sports, .attr-ent, .attr-money, .youdao-logo, .attr-tech, .attr-wy, .attr-ssdj {
+  margin-top: 3px;
+  width: 90px;
+  height: 19px; }
+
+.attr-ssdj {
+  width: 73px;
+  margin-right: 2px;
+  background-position: left -282px; }
+
+.attr-news {
+  background-position: left -71px; }
+
+.attr-sports {
+  background-position: left -90px; }
+
+.attr-ent {
+  background-position: left -109px; }
+
+.attr-money {
+  background-position: left -128px; }
+
+.attr-tech {
+  background-position: left -147px; }
+
+.attr-wy {
+  background-position: left -282px; }
+
+.auto-bgimg {
+  width: 101px;
+  height: 20px;
+  background-position: left -165px; }
+
+.huihui-title {
+  background-position: -39px -186px; }
+
+.news-reader {
+  padding-left: 24px;
+  background-position: -101px -143px; }
