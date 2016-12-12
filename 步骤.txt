@@ -44,3 +44,22 @@ http://www.tuicool.com/articles/IZR3AfV
 http://www.ydcss.com/archives/41
 http://php.cn/js-tutorial-338544.html
 http://www.qdfuns.com/notes/17100/31b17c8dcccec00de8315dfa91521cd9.html
+
+
+克隆到本地
+git clone https://github.com/zhangjianguo1500/gulp-sass.git
+
+
+
+可以查看当前版本库各个文件的状态
+$ git status
+
+全部添加
+git add命令可将该文件添加到缓存
+$ git add -A
+
+执行 git commit 将缓存区内容添加到仓库中
+$ git commit -m '第一次版本提交'
+
+将本地版本库的资源推送到远程服务器
+$ git push origin master
