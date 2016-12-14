@@ -1,0 +1,194 @@
+下载webpack,安装在项目依赖包
+$ npm install webpack --save-dev
+
+运行webpack,进行打包
+
+创建webpack的配置文件（webpack.config.js）
+module.exports = {
+    entry:'./src/index.js',
+    output: {
+        path: './build',
+        filename: 'bundle.js'
+    },
+};
+
+
+打开package.json，添加
+"build": "webpack"
+
+运行$ npm run build
+
+使用webpack-dev-server来起一个本地服务进行调试
+$ npm install webpack-dev-server --save-dev
+在package.json中配置,添加：
+"dev":"webpack-dev-server"
+
+显示合并代码进度
+$ webpack --progess
+
+命令行中显示颜色,添加一些颜色
+$ webpack --progess --colors
+
+显示打包过程中的出错信息
+$ webpack --display-error-details
+
+产品编译及压缩
+$ webpack -p
+
+
+打开package.json,对dev配置：
+"dev": "webpack-dev-server"
+启动：npm run dev
+
+再改为
+"dev": "webpack-dev-server --content-base build --progress --colors --hot --inline"
+也就是以build目录为资源
+
+再启动：npm run dev
+http://localhost:8080/，则指向build
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+多文件入口 
+module.exports = {
+    entry:{
+       index:'./src/index.js',
+       comp:'./src/component.js'
+    },
+    output: {
+        path: './build',
+        filename: '[name].js'
+    },
+};
+
+执行 $ npn run buld
+
+此时build目录下有2个文件
+
+
+
+使用Babel-loader来解析es6和jsx 
+下载：
+$ npm install react react-dom --save
+
+
+打开index.js
+引入
+import React, { Component } from 'react';
+import {render} from 'react';
+
+然后封装一个组件（名为HelloWorld）
+class HelloWorld extends Component {
+    render(){
+        return (
+            <h1>您好</h1>
+        )
+    }
+}
+
+
+然后把组件渲染到页面上去，再添加：
+
+render(<HelloWorld>)
+
+
+index.js完整代码：
+
+
+import React, { Component } from 'react';
+import {render} from 'react-dom';
+
+class App extends Component {
+    render(){
+        return (
+            <h1>您好</h1>
+        )
+    }
+}
+
+render(<App>)
+
+
+打开index.html,写react组件的根容器，以下代码：
+<div id="HelloWorld"></div>
+
+写好后，再打开index.js，我们要把根容器获取到，再添加
+let root=document.getElementById('app');
+render(<App/>,root)
+
+
+index.js 完整代码：
+import React, { Component } from 'react';
+import {render} from 'react-dom';
+
+class App extends Component {
+    render(){
+        return (
+            <h1>您好</h1>
+        )
+    }
+}
+
+let root=document.getElementById('app');
+render(<App/>,root)
+
+
+要想让代码跑起来，再下载babel-loader
+$ npm install babel-loader babel-core babel-preset-es2015 babel-preset-react --save-dev
+
+再创建
+$ touch .babelrc
+
+{
+ "presets":["es2015","react"]
+}
+
+
+
+再来配置webpack --config conf.js
+
+
+module.exports = {
+    entry:'./src/index.js',
+    output: {
+        path: './build',
+        filename: 'bundle.js'
+    },
+    module: {
+        
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            }
+        ]
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+然后执行：npm run dev
