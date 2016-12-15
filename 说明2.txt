@@ -1,0 +1,201 @@
+1.初始化项目
+
+创建一个项目
+$ mkdir webpack-demos && cd webpack-demos
+$ git init
+$ touch README.md .gitignore
+$ npm init
+
+编辑.gitignore
+node_modules
+*.log*
+.idea
+
+建立src和build两个目录
+# src 目录存放源码，build 目录存放编译打包之后的资源
+$ mkdir src build
+$ cd src && touch index.js component.js
+$ cd ../build && touch index.html
+
+
+/* src/index.js */
+var component = require('./component.js');
+
+component();
+
+
+下载webpack和webpack-dev-server
+# 安装并保存在项目的依赖中
+$ npm install webpack --save-dev 
+
+
+打开package.json，在"test"下一行：
+"build":"webpack"
+
+
+创建webpack的配置文件
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: './build',
+        filename: 'bundle.js'
+    },
+};
+
+
+$ webpack -V
+
+
+2.webpack和webpack-dev-server的基本命令 
+
+$ npm run build 
+使用webpack-dev-server来起一个本地服务
+$ npm install webpack-dev-server --save-dev
+
+
+$ webpack --progess 显示构建进度
+$ webpack --progess --colors - 命令行中显示颜色
+$ webpack --display-error-details 报错信息
+$ webpack -p 产品编译及压缩
+
+打开package.json配置开发的：
+"dev":"webpack-dev-server"
+启动：
+$ npm run dev
+在浏览器打开http://localhost:8080/
+所有的文件都可以看
+
+webpack-dev-server服务会默认以当前目录伺服文件，如果设置了content-base的话，服务的根路径则为build目录：
+"dev":"webpack-dev-server ---content-base build"
+
+再启动
+$ npm run dev
+在浏览器打开http://localhost:8080/
+直接执向build
+
+再继续：
+"dev":"webpack-dev-server --content-base build --progress --colors --hot --inline"
+
+
+3.多文件入口
+/* webpack.config.js */
+
+module.exports = {
+    entry: {
+      index: './src/index.js',
+      comp: './src/component.js',
+    },
+    output: {
+        path: './build',
+        filename: '[name].js'
+    },
+};
+执行：$ npm run build
+现在build目录下多出2个文件
+
+
+4.使用Babel-loader来解析es6和jsx #
+下载相应的模块：
+$ npm install react react-dom --save
+
+编辑index.js页面
+import React, { Component } from 'react';
+import {render} from 'react-dom';
+
+class App extends Component {
+    render(){
+        return (
+            <div>您好</div>
+        )
+    }
+}
+
+let root=document.getElementById('app');
+render(<App/>,root);
+
+$ npm install babel-loader babel-core babel-preset-es2015 babel-preset-react --save-dev
+
+$ touch .babelrc
+然后编辑babelrc 代码清单：
+{
+  "presets": ["es2015", "react"],
+  "plugins": []
+}
+
+
+再打开
+/* webpack.config.js */
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: './build',
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel'
+            }
+        ]
+    }
+};
+
+然后运行
+$ npm run dev
+
+
+5.devServer
+在运行webpack-dev-server的时候，后面带了一串参数，这里我们可以使用devServer字段统一在webpack.config.js文件里面维护。
+
+把package.json修改
+"dev": "webpack-dev-server --content-base build --progress --colors --hot --inline"
+改为
+"dev": "webpack-dev-server"
+
+
+打开webpack.config.js
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: './build',
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel'
+            }
+        ]
+    },
+    devServer: {
+        progress:true,
+        contentBase: 'build',
+        stats: { colors: true },
+        inline:true,
+        publicPath: '/static/'
+    },
+};
+
+
+index.html 链接的js路径也要改
+
+
+
+7.解析样式文件
+$ npm install css-loader style-loader less-loader sass-loader --save-dev
+
+9.图标字体等资源 #
+$ npm install url-loader --save-dev
+
+
+
+
+React-hot-loader 组件级热更新
+$ npm install --save-dev react-hot-loader
+
+HTML Webpack Plugin 解析html模板
+$ npm install --save-dev html-webpack-plugin
