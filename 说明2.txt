@@ -1,18 +1,18 @@
-1.³õÊ¼»¯ÏîÄ¿
+1.åˆå§‹åŒ–é¡¹ç›®
 
-´´½¨Ò»¸öÏîÄ¿
+åˆ›å»ºä¸€ä¸ªé¡¹ç›®
 $ mkdir webpack-demos && cd webpack-demos
 $ git init
 $ touch README.md .gitignore
 $ npm init
 
-±à¼­.gitignore
+ç¼–è¾‘.gitignore
 node_modules
 *.log*
 .idea
 
-½¨Á¢srcºÍbuildÁ½¸öÄ¿Â¼
-# src Ä¿Â¼´æ·ÅÔ´Âë£¬build Ä¿Â¼´æ·Å±àÒë´ò°üÖ®ºóµÄ×ÊÔ´
+å»ºç«‹srcå’Œbuildä¸¤ä¸ªç›®å½•
+# src ç›®å½•å­˜æ”¾æºç ï¼Œbuild ç›®å½•å­˜æ”¾ç¼–è¯‘æ‰“åŒ…ä¹‹åçš„èµ„æº
 $ mkdir src build
 $ cd src && touch index.js component.js
 $ cd ../build && touch index.html
@@ -24,16 +24,16 @@ var component = require('./component.js');
 component();
 
 
-ÏÂÔØwebpackºÍwebpack-dev-server
-# °²×°²¢±£´æÔÚÏîÄ¿µÄÒÀÀµÖĞ
+ä¸‹è½½webpackå’Œwebpack-dev-server
+# å®‰è£…å¹¶ä¿å­˜åœ¨é¡¹ç›®çš„ä¾èµ–ä¸­
 $ npm install webpack --save-dev 
 
 
-´ò¿ªpackage.json£¬ÔÚ"test"ÏÂÒ»ĞĞ£º
+æ‰“å¼€package.jsonï¼Œåœ¨"test"ä¸‹ä¸€è¡Œï¼š
 "build":"webpack"
 
 
-´´½¨webpackµÄÅäÖÃÎÄ¼ş
+åˆ›å»ºwebpackçš„é…ç½®æ–‡ä»¶
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -46,38 +46,38 @@ module.exports = {
 $ webpack -V
 
 
-2.webpackºÍwebpack-dev-serverµÄ»ù±¾ÃüÁî 
+2.webpackå’Œwebpack-dev-serverçš„åŸºæœ¬å‘½ä»¤ 
 
 $ npm run build 
-Ê¹ÓÃwebpack-dev-serverÀ´ÆğÒ»¸ö±¾µØ·şÎñ
+ä½¿ç”¨webpack-dev-serveræ¥èµ·ä¸€ä¸ªæœ¬åœ°æœåŠ¡
 $ npm install webpack-dev-server --save-dev
 
 
-$ webpack --progess ÏÔÊ¾¹¹½¨½ø¶È
-$ webpack --progess --colors - ÃüÁîĞĞÖĞÏÔÊ¾ÑÕÉ«
-$ webpack --display-error-details ±¨´íĞÅÏ¢
-$ webpack -p ²úÆ·±àÒë¼°Ñ¹Ëõ
+$ webpack --progess æ˜¾ç¤ºæ„å»ºè¿›åº¦
+$ webpack --progess --colors - å‘½ä»¤è¡Œä¸­æ˜¾ç¤ºé¢œè‰²
+$ webpack --display-error-details æŠ¥é”™ä¿¡æ¯
+$ webpack -p äº§å“ç¼–è¯‘åŠå‹ç¼©
 
-´ò¿ªpackage.jsonÅäÖÃ¿ª·¢µÄ£º
+æ‰“å¼€package.jsoné…ç½®å¼€å‘çš„ï¼š
 "dev":"webpack-dev-server"
-Æô¶¯£º
+å¯åŠ¨ï¼š
 $ npm run dev
-ÔÚä¯ÀÀÆ÷´ò¿ªhttp://localhost:8080/
-ËùÓĞµÄÎÄ¼ş¶¼¿ÉÒÔ¿´
+åœ¨æµè§ˆå™¨æ‰“å¼€http://localhost:8080/
+æ‰€æœ‰çš„æ–‡ä»¶éƒ½å¯ä»¥çœ‹
 
-webpack-dev-server·şÎñ»áÄ¬ÈÏÒÔµ±Ç°Ä¿Â¼ËÅ·şÎÄ¼ş£¬Èç¹ûÉèÖÃÁËcontent-baseµÄ»°£¬·şÎñµÄ¸ùÂ·¾¶ÔòÎªbuildÄ¿Â¼£º
+webpack-dev-serveræœåŠ¡ä¼šé»˜è®¤ä»¥å½“å‰ç›®å½•ä¼ºæœæ–‡ä»¶ï¼Œå¦‚æœè®¾ç½®äº†content-baseçš„è¯ï¼ŒæœåŠ¡çš„æ ¹è·¯å¾„åˆ™ä¸ºbuildç›®å½•ï¼š
 "dev":"webpack-dev-server ---content-base build"
 
-ÔÙÆô¶¯
+å†å¯åŠ¨
 $ npm run dev
-ÔÚä¯ÀÀÆ÷´ò¿ªhttp://localhost:8080/
-Ö±½ÓÖ´Ïòbuild
+åœ¨æµè§ˆå™¨æ‰“å¼€http://localhost:8080/
+ç›´æ¥æ‰§å‘build
 
-ÔÙ¼ÌĞø£º
+å†ç»§ç»­ï¼š
 "dev":"webpack-dev-server --content-base build --progress --colors --hot --inline"
 
 
-3.¶àÎÄ¼şÈë¿Ú
+3.å¤šæ–‡ä»¶å…¥å£
 /* webpack.config.js */
 
 module.exports = {
@@ -90,22 +90,22 @@ module.exports = {
         filename: '[name].js'
     },
 };
-Ö´ĞĞ£º$ npm run build
-ÏÖÔÚbuildÄ¿Â¼ÏÂ¶à³ö2¸öÎÄ¼ş
+æ‰§è¡Œï¼š$ npm run build
+ç°åœ¨buildç›®å½•ä¸‹å¤šå‡º2ä¸ªæ–‡ä»¶
 
 
-4.Ê¹ÓÃBabel-loaderÀ´½âÎöes6ºÍjsx #
-ÏÂÔØÏàÓ¦µÄÄ£¿é£º
+4.ä½¿ç”¨Babel-loaderæ¥è§£æes6å’Œjsx #
+ä¸‹è½½ç›¸åº”çš„æ¨¡å—ï¼š
 $ npm install react react-dom --save
 
-±à¼­index.jsÒ³Ãæ
+ç¼–è¾‘index.jsé¡µé¢
 import React, { Component } from 'react';
 import {render} from 'react-dom';
 
 class App extends Component {
     render(){
         return (
-            <div>ÄúºÃ</div>
+            <div>æ‚¨å¥½</div>
         )
     }
 }
@@ -116,14 +116,14 @@ render(<App/>,root);
 $ npm install babel-loader babel-core babel-preset-es2015 babel-preset-react --save-dev
 
 $ touch .babelrc
-È»ºó±à¼­babelrc ´úÂëÇåµ¥£º
+ç„¶åç¼–è¾‘babelrc ä»£ç æ¸…å•ï¼š
 {
   "presets": ["es2015", "react"],
   "plugins": []
 }
 
 
-ÔÙ´ò¿ª
+å†æ‰“å¼€
 /* webpack.config.js */
 
 module.exports = {
@@ -142,20 +142,20 @@ module.exports = {
     }
 };
 
-È»ºóÔËĞĞ
+ç„¶åè¿è¡Œ
 $ npm run dev
 
 
 5.devServer
-ÔÚÔËĞĞwebpack-dev-serverµÄÊ±ºò£¬ºóÃæ´øÁËÒ»´®²ÎÊı£¬ÕâÀïÎÒÃÇ¿ÉÒÔÊ¹ÓÃdevServer×Ö¶ÎÍ³Ò»ÔÚwebpack.config.jsÎÄ¼şÀïÃæÎ¬»¤¡£
+åœ¨è¿è¡Œwebpack-dev-serverçš„æ—¶å€™ï¼Œåé¢å¸¦äº†ä¸€ä¸²å‚æ•°ï¼Œè¿™é‡Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨devServerå­—æ®µç»Ÿä¸€åœ¨webpack.config.jsæ–‡ä»¶é‡Œé¢ç»´æŠ¤ã€‚
 
-°Ñpackage.jsonĞŞ¸Ä
+æŠŠpackage.jsonä¿®æ”¹
 "dev": "webpack-dev-server --content-base build --progress --colors --hot --inline"
-¸ÄÎª
+æ”¹ä¸º
 "dev": "webpack-dev-server"
 
 
-´ò¿ªwebpack.config.js
+æ‰“å¼€webpack.config.js
 
 module.exports = {
     entry: './src/index.js',
@@ -181,21 +181,25 @@ module.exports = {
 };
 
 
-index.html Á´½ÓµÄjsÂ·¾¶Ò²Òª¸Ä
+index.html é“¾æ¥çš„jsè·¯å¾„ä¹Ÿè¦æ”¹
 
 
 
-7.½âÎöÑùÊ½ÎÄ¼ş
+7.è§£ææ ·å¼æ–‡ä»¶
 $ npm install css-loader style-loader less-loader sass-loader --save-dev
 
-9.Í¼±ê×ÖÌåµÈ×ÊÔ´ #
+9.å›¾æ ‡å­—ä½“ç­‰èµ„æº #
 $ npm install url-loader --save-dev
 
 
 
 
-React-hot-loader ×é¼ş¼¶ÈÈ¸üĞÂ
+React-hot-loader ç»„ä»¶çº§çƒ­æ›´æ–°
 $ npm install --save-dev react-hot-loader
 
-HTML Webpack Plugin ½âÎöhtmlÄ£°å
+HTML Webpack Plugin è§£æhtmlæ¨¡æ¿
 $ npm install --save-dev html-webpack-plugin
+
+
+
+npm install babel-core babel-loader babel-preset-es2015 babel-preset-react css-loader node-sass react react-dom sass-loader style-loader webpack webpack-dev-server --save-dev
